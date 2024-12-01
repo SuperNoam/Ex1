@@ -14,6 +14,9 @@ public class Ex1 {
             return false;
         }
         sub = num.substring(0,index);
+        if(sub.isEmpty()){
+            return false;
+        }
         for (int i = 0; i < sub.length(); i++) {
             if(!Character.isDigit(num.charAt(i))){
                 return false;
