@@ -67,6 +67,17 @@ public class Ex1 {
         ans+="b"+getStrValue(base);
         return ans;
     }
+    public static int maxIndex(String[] arr){
+        int maxIndex = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if(arr[i] != null){
+                if(number2Int(arr[i]) > number2Int(arr[maxIndex])){
+                    maxIndex = i;
+                }
+            }
+        }
+        return maxIndex;
+    }
 
 
 
