@@ -48,6 +48,9 @@ public class Ex1 {
 
         return value;
     }
+    public static boolean equals(String n1, String n2) {
+        return number2Int(n1) == number2Int(n2);
+    }
 
 
 
