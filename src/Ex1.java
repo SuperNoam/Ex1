@@ -60,7 +60,7 @@ public class Ex1 {
         if(num == 0){
             return "0b"+getStrValue(base);
         }
-        while (num >= 0) {
+        while (num > 0) {
             ans = getStrValue(num%base) + ans;
             num/=base;
         }
@@ -68,10 +68,13 @@ public class Ex1 {
         return ans;
     }
     public static int maxIndex(String[] arr){
-        int maxIndex = 0;
+        int maxIndex = -1;
         for (int i = 0; i < arr.length; i++) {
-            if(arr[i] != null){
-                if(number2Int(arr[i]) > number2Int(arr[maxIndex])){
+            if(arr[i] != null && isNumber(arr[i])) {
+                if(maxIndex == -1) {
+                    maxIndex = i;
+
+                }else if(number2Int(arr[i]) > number2Int(arr[maxIndex])){
                     maxIndex = i;
                 }
             }
@@ -90,10 +93,10 @@ public class Ex1 {
         return true;
     }
     public static String getStrValue(int num) {
-        if(num <= 1 || num > 16){
+        if(num < 0  || num > 16){
             return "";
         }
-        String[] arr = {"","","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G"};
+        String[] arr = {"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G"};
         return arr[num];
     }
     public static int getNumValue(char c ){
