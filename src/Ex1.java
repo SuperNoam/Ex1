@@ -18,13 +18,13 @@ public class Ex1 {
         if(!((base >= 50 && base <= 57) || (base >= 65 && base <= 71))){
             return false;
         }
-        base = getvalue(c);
+        base = getNumValue(c);
         sub = num.substring(0,indexOfB);
         if(sub.isEmpty()){
             return false;
         }
         for(int i = 0; i < sub.length(); i++){
-            if(getvalue(sub.charAt(i)) >= base || getvalue(sub.charAt(i)) == -1 ){
+            if(getNumValue(sub.charAt(i)) >= base || getNumValue(sub.charAt(i)) == -1 ){
                 return false;
             }
         }
@@ -38,12 +38,12 @@ public class Ex1 {
             return Integer.parseInt(num);
         }
         int Bindex = num.indexOf('b');
-        int base = getvalue(num.charAt(Bindex+1));
+        int base = getNumValue(num.charAt(Bindex+1));
         String strValue = num.substring(0,Bindex);
         int value = 0;
         for (int i = 0; i < strValue.length(); i++) {
             int power = strValue.length() - 1 - i;
-            value += Math.pow(base, power) * getvalue(strValue.charAt(i));
+            value += Math.pow(base, power) * getNumValue(strValue.charAt(i));
         }
 
         return value;
@@ -52,6 +52,21 @@ public class Ex1 {
         return number2Int(n1) == number2Int(n2);
     }
 
+    public static String int2Number(int num, int base) {
+        String ans = "";
+        if(getStrValue(base).isEmpty()){
+            return ans;
+        }
+        if(num == 0){
+            return "0b"+getStrValue(base);
+        }
+        while (num >= 0) {
+            ans = getStrValue(num%base) + ans;
+            num/=base;
+        }
+        ans+="b"+getStrValue(base);
+        return ans;
+    }
 
 
 
@@ -63,7 +78,14 @@ public class Ex1 {
         }
         return true;
     }
-    public static int getvalue(char c ){
+    public static String getStrValue(int num) {
+        if(num <= 1 || num > 16){
+            return "";
+        }
+        String[] arr = {"","","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G"};
+        return arr[num];
+    }
+    public static int getNumValue(char c ){
         char[] arr = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G'};
         for (int i = 0; i < arr.length; i++) {
             if(arr[i] == c){
