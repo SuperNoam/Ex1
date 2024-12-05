@@ -30,6 +30,28 @@ public class Ex1 {
         }
         return true;
     }
+    public static int number2Int(String num) {
+        if(!isNumber(num)){
+            return -1;
+        }
+        if(allDigits(num)){
+            return Integer.parseInt(num);
+        }
+        int Bindex = num.indexOf('b');
+        int base = getvalue(num.charAt(Bindex+1));
+        String strValue = num.substring(0,Bindex);
+        int value = 0;
+        for (int i = 0; i < strValue.length(); i++) {
+            int power = strValue.length() - 1 - i;
+            value += Math.pow(base, power) * getvalue(strValue.charAt(i));
+        }
+
+        return value;
+    }
+
+
+
+
     public static boolean allDigits(String num) {
         for (int i = 0; i < num.length(); i++) {
             if(!Character.isDigit(num.charAt(i))) {
