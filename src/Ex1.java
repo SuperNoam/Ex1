@@ -1,30 +1,30 @@
 public class Ex1 {
 
     public static boolean isNumber(String num) {
-        int index = num.indexOf('b');
-        if(index == -1) {
+        if (num == null || num.isEmpty()) {
+            return false;
+        }
+        int indexOfB = num.indexOf('b');
+        if(indexOfB == -1) {
+            //no b in the String so check if the number is only digits
             return allDigits(num);
         }
-        String sub = num.substring(index+1);
+        String sub = num.substring(indexOfB+1);
         if(sub.length() != 1) {
-            System.out.println(1);
             return false;
         }
         char c = sub.charAt(0);
         int base =(int)c;
         if(!((base >= 50 && base <= 57) || (base >= 65 && base <= 71))){
-            System.out.println(2);
             return false;
         }
         base = getvalue(c);
-        sub = num.substring(0,index);
+        sub = num.substring(0,indexOfB);
         if(sub.isEmpty()){
-            System.out.println(3);
             return false;
         }
         for(int i = 0; i < sub.length(); i++){
             if(getvalue(sub.charAt(i)) >= base || getvalue(sub.charAt(i)) == -1 ){
-                System.out.println(4);
                 return false;
             }
         }
