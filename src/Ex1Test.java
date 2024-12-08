@@ -63,4 +63,27 @@ public class Ex1Test {
         String str5 = "45b7",str6 = "37bB";
         assertFalse(Ex1.equals(str5,str6));
     }
+
+    @Test
+    void getNumValueTest(){
+        assertEquals(-1,Ex1.getNumValue('a'));
+        assertEquals(10,Ex1.getNumValue('A'));
+        assertEquals(16,Ex1.getNumValue('G'));
+        assertEquals(-1,Ex1.getNumValue('b'));
+    }
+    @Test
+    void getStrValueTest(){
+        assertEquals("B",Ex1.getStrValue(11));
+        assertEquals("",Ex1.getStrValue(-1));
+        assertEquals("4",Ex1.getStrValue(4));
+        assertEquals("F",Ex1.getStrValue(15));
+    }
+    @Test
+    void allDigitsTest(){
+        assertTrue(Ex1.allDigits("84152456"));
+        assertFalse(Ex1.allDigits("84152a456"));
+        assertFalse(Ex1.allDigits("-1"));
+        assertFalse(Ex1.allDigits(" 24"));
+        assertTrue(Ex1.allDigits(""));
+    }
 }
