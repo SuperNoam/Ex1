@@ -29,7 +29,6 @@ public class Ex1Main {
                                 System.out.println(num1 + " * " + num2 + " = " + arr[3]);
                                 System.out.println("Max number over " + Arrays.toString(arr) + " is: " + arr[Ex1.maxIndex(arr)]);
                             }
-
                             else{
                                 System.out.println("ERR: wrong base, should be [2,16], got ("+base+")");
                             }
