@@ -60,6 +60,9 @@ public class Ex1 {
         if(num == 0){
             return "0b"+getStrValue(base);
         }
+        if(base == 10){
+            return String.valueOf(num);
+        }
         while (num > 0) {
             ans = getStrValue(num%base) + ans;
             num/=base;
