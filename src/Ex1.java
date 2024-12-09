@@ -11,20 +11,28 @@ public class Ex1 {
         }
         String sub = num.substring(indexOfB+1);
         if(sub.length() != 1) {
+            //if the length of the String after the b is not equal 1
+            //return false
             return false;
         }
         char c = sub.charAt(0);
         int base =(int)c;
         if(!((base >= 50 && base <= 57) || (base >= 65 && base <= 71))){
+            //check if the base is the right letters / digits
+            //using ASCII
             return false;
         }
         base = getNumValue(c);
         sub = num.substring(0,indexOfB);
         if(sub.isEmpty()){
+            //check if the string from the start to the b
+            //is empty or not
             return false;
         }
         for(int i = 0; i < sub.length(); i++){
             if(getNumValue(sub.charAt(i)) >= base || getNumValue(sub.charAt(i)) == -1 ){
+                //chech if the digits/letter are correct according to the base
+                //and also if they fit in the format
                 return false;
             }
         }
@@ -32,16 +40,20 @@ public class Ex1 {
     }
     public static int number2Int(String num) {
         if(!isNumber(num)){
+            //check if the number are in correct format
             return -1;
         }
         if(allDigits(num)){
+            //if the number is already in base 10 and its made
+            //only from digits just cast it to int
             return Integer.parseInt(num);
         }
-        int Bindex = num.indexOf('b');
-        int base = getNumValue(num.charAt(Bindex+1));
-        String strValue = num.substring(0,Bindex);
+        int bIndex= num.indexOf('b');
+        int base = getNumValue(num.charAt(bIndex+1));
+        String strValue = num.substring(0,bIndex);
         int value = 0;
         for (int i = 0; i < strValue.length(); i++) {
+            //calc the value of the number
             int power = strValue.length() - 1 - i;
             value += Math.pow(base, power) * getNumValue(strValue.charAt(i));
         }
@@ -64,10 +76,11 @@ public class Ex1 {
             return String.valueOf(num);
         }
         while (num > 0) {
+            //build the number from left to right
             ans = getStrValue(num%base) + ans;
             num/=base;
         }
-        ans+="b"+getStrValue(base);
+        ans = ans+"b"+getStrValue(base);
         return ans;
     }
     public static int maxIndex(String[] arr){
