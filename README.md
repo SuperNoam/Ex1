@@ -7,7 +7,7 @@ The assigment was to build a basic clalcuator and base convertor for positive nu
 in the format of (num)b(base) where the number can be built from digits of
 0-9 and letters of A-G,
 * The base can also be one of the digits 2-9 or one of the letters A-G.
-* For each number the programe will test if the input fits into the format and
+* For each number the program will test if the input fits into the format and
 ask the user to enter again if not.
 * If the input is in the correct format the program will say it and will display 
 the value of the number in base 10 for easy understanding.
